@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import api, { getCsrfCookie } from '../api'
 
     export default function Auth() {
+    const location = useLocation()
     const navigate = useNavigate()
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(!location.state?.register)
+    // const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
