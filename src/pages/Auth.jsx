@@ -1,13 +1,22 @@
 import { useState } from 'react'
+import api, { getCsrfCookie } from '../api'
+import { useNavigate } from 'react-router-dom'
 
     export default function Auth() {
+    const navigate = useNavigate()
     const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log({ email, password })
+        try {
+            await getCsrfCookie()
+            await api.post('/login', { email, password })
+            navigate('/dashboard')
+        } catch (error) {
+            console.error('Login failed:', error.response?.data)
+        }
     }
 
     const [name, setName] = useState('')
@@ -15,14 +24,25 @@ import { useState } from 'react'
     const [registerPassword, setRegisterPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    const handleRegisterSubmit = (e) => {
-        e.preventDefault()
-        if (registerPassword !== confirmPassword) {
+const handleRegisterSubmit = async (e) => {
+    e.preventDefault()
+    if (registerPassword !== confirmPassword) {
         alert("Passwords don't match")
         return
-        }
-        console.log({ name, email: registerEmail, password: registerPassword })
     }
+    try {
+        await getCsrfCookie()
+        await api.post('/register', {
+            name,
+            email: registerEmail,
+            password: registerPassword,
+            password_confirmation: confirmPassword,
+        })
+        navigate('/dashboard')
+    } catch (error) {
+        console.error('Register failed:', error.response?.data)
+    }
+}
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-950">
