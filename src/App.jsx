@@ -3,6 +3,10 @@ import Navbar from './components/Navbar'
 import Landing from './pages/Landing'
 import Auth from './pages/Auth'
 import Dashboard from './pages/Dashboard'
+import ProtectedRoute from './components/ProtectedRoute'
+import NotesPages from './pages/NotesPages'
+import TasksPages from './pages/TasksPages'
+import AiChat from './pages/AiChat'
 
 export default function App() {
   const location = useLocation()
@@ -15,7 +19,26 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/notes" element={
+          <ProtectedRoute>
+            <NotesPages />
+          </ProtectedRoute>
+        } />
+        <Route path="/tasks" element={
+          <ProtectedRoute>
+            <TasksPages />
+          </ProtectedRoute>
+        } />
+        <Route path="/ai-chat" element={
+          <ProtectedRoute>
+            <AiChat />
+          </ProtectedRoute>
+        } />
       </Routes>
     </>
   )
