@@ -21,4 +21,7 @@ export const createTask = (data) => api.post('/api/tasks', data)
 export const updateTask = (id, data) => api.put(`/api/tasks/${id}`, data)
 export const deleteTask = (id) => api.delete(`/api/tasks/${id}`)
 
+export const updateProfile = (data) => api.put('/api/profile', data)
+export const updatePassword = (data) => api.put('/api/profile/password', data)
+
 export default api

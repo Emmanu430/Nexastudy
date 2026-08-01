@@ -6,6 +6,7 @@ const AuthContext = createContext()
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [sidebarOpen, setSidebarOpen] = useState(true)
 
     useEffect(() => {
         api.get('/api/user')
@@ -15,7 +16,7 @@ export function AuthProvider({ children }) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, setUser, loading }}>
+        <AuthContext.Provider value={{ user, setUser, loading, sidebarOpen, setSidebarOpen }}>
         {children}
         </AuthContext.Provider>
     )

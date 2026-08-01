@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import NotesPages from './pages/NotesPages'
 import TasksPages from './pages/TasksPages'
 import AiChat from './pages/AiChat'
+import Profile from './pages/Porfile'
 
 export default function App() {
   const location = useLocation()
@@ -37,6 +38,11 @@ export default function App() {
         <Route path="/ai-chat" element={
           <ProtectedRoute>
             <AiChat />
+          </ProtectedRoute>
+        } />
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         } />
       </Routes>

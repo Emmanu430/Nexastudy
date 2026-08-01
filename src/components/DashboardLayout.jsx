@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import Sidebar from './Sidebar'
+import { useAuth } from '../context/AuthContext'
 
 export default function DashboardLayout({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const { sidebarOpen, setSidebarOpen } = useAuth()
 
   return (
     <div className="flex bg-gray-950 min-h-screen">
