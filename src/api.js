@@ -16,4 +16,9 @@ export const createNote = (data) => api.post('/api/notes', data)
 export const updateNote = (id, data) => api.put(`/api/notes/${id}`, data)
 export const deleteNote = (id) => api.delete(`/api/notes/${id}`)
 
+export const getTasks = () => api.get('/api/tasks')
+export const createTask = (data) => api.post('/api/tasks', data)
+export const updateTask = (id, data) => api.put(`/api/tasks/${id}`, data)
+export const deleteTask = (id) => api.delete(`/api/tasks/${id}`)
+
 export default api
