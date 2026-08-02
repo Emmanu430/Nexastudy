@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import DashboardLayout from '../components/DashboardLayout'
 import { getNotes, getTasks } from '../api'
 import { useAuth } from '../context/AuthContext'
+import { motion } from 'motion/react'
 
 export default function Dashboard() {
   const { user } = useAuth()
@@ -35,16 +36,22 @@ export default function Dashboard() {
       <p className="mt-2 text-gray-400">Here's what's happening in your academic world today.</p>
 
       <div className="grid md:grid-cols-3 gap-6 mt-8">
-        {loading ? (
-          <p className="text-gray-500 col-span-3">Loading stats...</p>
-        ) : (
-          stats.map((stat) => (
-            <div key={stat.label} className="p-6 rounded-xl bg-gray-900 border border-gray-800">
-              <p className="text-gray-400 text-sm">{stat.label}</p>
-              <p className="text-3xl font-bold text-white mt-1">{stat.value}</p>
-            </div>
-          ))
-        )}
+       {loading ? (
+  <p className="text-gray-500 col-span-3">Loading stats...</p>
+) : (
+  stats.map((stat, index) => (
+    <motion.div
+      key={stat.label}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="p-6 rounded-xl bg-gray-900 border border-gray-800"
+    >
+      <p className="text-gray-400 text-sm">{stat.label}</p>
+      <p className="text-3xl font-bold text-white mt-1">{stat.value}</p>
+    </motion.div>
+  ))
+)}
       </div>
     </DashboardLayout>
   )

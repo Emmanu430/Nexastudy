@@ -7,7 +7,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import '../swiper-custom.css'
 import { useNavigate } from 'react-router-dom'
-
+import LogoIcon from "../components/Logo"
 
 const features = [
     {
@@ -34,14 +34,17 @@ const features = [
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-950 overflow-x-hidden">
         <section className="w-full text-center pt-20">
-            <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl font-bold text-white"
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="flex items-center justify-center gap-4"
             >
-            Nexa<span className="text-blue-500">Study</span>
-            </motion.h1>
+                <LogoIcon size={70} />
+                <h1 className="text-5xl font-bold text-white -ml-5 mb-3">
+                    Nexa<span className="text-blue-500">Study</span>
+                </h1>
+            </motion.div>
 
             <motion.p
             initial={{ opacity: 0, y: 20 }}

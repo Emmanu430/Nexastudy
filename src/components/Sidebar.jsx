@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { LayoutDashboard, StickyNote, ListTodo, MessageSquare, User, LogOut, X } from 'lucide-react'
 import api from '../api'
 import { useAuth } from '../context/AuthContext'
+import LogoIcon from './Logo'
 
 export default function Sidebar({ isOpen, onClose }) {
     const navigate = useNavigate()
@@ -46,8 +47,16 @@ export default function Sidebar({ isOpen, onClose }) {
                 className="fixed top-0 left-0 h-screen w-64 bg-gray-900 border-r border-gray-800 flex flex-col p-6 z-50"
             >
                 <div className="flex items-center justify-between mb-6">
-                <Link to="/" className="text-xl font-bold text-white whitespace-nowrap">
-                    Nexa<span className="text-blue-500">Study</span>
+                <Link to="/" className="flex  items-center   overflow-hidden">
+                    <LogoIcon size={50} />
+                    <motion.span
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: 'auto', opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="text-xl  font-bold text-white whitespace-nowrap"
+                    >
+                        Nexa<span className="text-blue-500">Study</span>
+                    </motion.span>
                 </Link>
                 <button onClick={onClose} className="text-gray-400 hover:text-white">
                     <X size={20} />
@@ -62,18 +71,24 @@ export default function Sidebar({ isOpen, onClose }) {
                 )}
 
                 <nav className="flex flex-col gap-1 flex-1">
-                {navItems.map(({ to, label, icon: Icon }) => (
-                    <Link
-                    key={to}
-                    to={to}
-                    onClick={onClose}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition whitespace-nowrap"
-                    >
-                    <Icon size={18} />
-                    {label}
-                    </Link>
-                ))}
-                </nav>
+{navItems.map(({ to, label, icon: Icon }, index) => (
+    <motion.div
+    key={to}
+    initial={{ opacity: 0, x: -10 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+    >
+    <Link
+        to={to}
+        onClick={onClose}
+        className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition whitespace-nowrap"
+    >
+        <Icon size={18} />
+        {label}
+    </Link>
+    </motion.div>
+))}
+</nav>
 
                 <button
                 onClick={handleLogout}

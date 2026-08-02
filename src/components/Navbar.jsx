@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import LogoIcon from './Logo'
 
 export default function Navbar() {
     const navigate = useNavigate()
@@ -8,9 +9,12 @@ export default function Navbar() {
 
     return (
         <nav className="relative flex items-center justify-between px-6 py-4 bg-gray-950 border-b border-gray-800">
-        <Link to="/" className="text-xl font-bold text-white">
-            Nexa<span className="text-blue-500">Study</span>
-        </Link>
+            <Link to="/" className="flex items-center gap-2">
+                    <LogoIcon size={50} />
+                    <span className="text-xl font-bold text-white -ml-3 mb-2">
+                        Nexa<span className="text-blue-500">Study</span>
+                    </span>
+            </Link>
 
         {/* Desktop links - hidden on mobile */}
         <div className="hidden md:flex items-center gap-6">

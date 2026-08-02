@@ -9,8 +9,9 @@ const api = axios.create({
     },
 })
 
-export const getCsrfCookie = () => api.get('/sanctum/csrf-cookie')
-
+export const getCsrfCookie = () => api.get('/sanctum/csrf-cookie', {
+    headers: { 'Cache-Control': 'no-cache' },
+})
 export const getNotes = () => api.get('/api/notes')
 export const createNote = (data) => api.post('/api/notes', data)
 export const updateNote = (id, data) => api.put(`/api/notes/${id}`, data)

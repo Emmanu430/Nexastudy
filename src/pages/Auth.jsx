@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import api, { getCsrfCookie } from '../api'
+import { useAuth } from '../context/AuthContext'
 
     export default function Auth() {
     const location = useLocation()
     const navigate = useNavigate()
+    const { setUser } = useAuth()
     const [isLogin, setIsLogin] = useState(!location.state?.register)
     // const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState('')
@@ -20,6 +22,8 @@ const handleSubmit = async (e) => {
     try {
         await getCsrfCookie()
         await api.post('/login', { email, password })
+        const { data } = await api.get('/api/user')
+        setUser(data)
         navigate('/dashboard')
     } catch (err) {
         const message = err.response?.data?.message || 'Login failed. Please check your credentials.'
@@ -50,6 +54,8 @@ const handleRegisterSubmit = async (e) => {
             password: registerPassword,
             password_confirmation: confirmPassword,
         })
+        const { data } = await api.get('/api/user')
+        setUser(data)
         navigate('/dashboard')
     } catch (err) {
         const message = err.response?.data?.message || 'Registration failed. Please try again.'
