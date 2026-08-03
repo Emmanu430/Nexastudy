@@ -8,6 +8,7 @@ import NotesPages from './pages/NotesPages'
 import TasksPages from './pages/TasksPages'
 import AiChat from './pages/AiChat'
 import Profile from './pages/Porfile'
+import Courses from './pages/Courses'
 
 export default function App() {
   const location = useLocation()
@@ -45,7 +46,13 @@ export default function App() {
             <Profile />
           </ProtectedRoute>
         } />
+        <Route path="/courses" element={
+          <ProtectedRoute>
+            <Courses />
+          </ProtectedRoute>
+        } />
       </Routes>
+      <Routes></Routes>
     </>
   )
 }

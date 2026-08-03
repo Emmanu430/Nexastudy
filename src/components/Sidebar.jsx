@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
-import { LayoutDashboard, StickyNote, ListTodo, MessageSquare, User, LogOut, X } from 'lucide-react'
+import { LayoutDashboard, StickyNote, ListTodo, MessageSquare, User, LogOut, X, BookOpen } from 'lucide-react'
 import api from '../api'
 import { useAuth } from '../context/AuthContext'
 import LogoIcon from './Logo'
@@ -25,6 +25,7 @@ export default function Sidebar({ isOpen, onClose }) {
         { to: '/tasks', label: 'Tasks', icon: ListTodo },
         { to: '/ai-chat', label: 'AI Chat', icon: MessageSquare },
         { to: '/profile', label: 'Profile', icon: User },
+        { to: '/courses', label: 'Courses', icon: BookOpen },
     ]
 
     return (
