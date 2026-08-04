@@ -23,9 +23,9 @@ export default function Sidebar({ isOpen, onClose }) {
         { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { to: '/notes', label: 'Notes', icon: StickyNote },
         { to: '/tasks', label: 'Tasks', icon: ListTodo },
+        { to: '/courses', label: 'Courses', icon: BookOpen },
         { to: '/ai-chat', label: 'AI Chat', icon: MessageSquare },
         { to: '/profile', label: 'Profile', icon: User },
-        { to: '/courses', label: 'Courses', icon: BookOpen },
     ]
 
     return (

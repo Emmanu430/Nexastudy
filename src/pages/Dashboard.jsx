@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import DashboardLayout from '../components/DashboardLayout'
-import { getNotes, getTasks } from '../api'
+import { getNotes, getTasks, getCourses } from '../api'
 import { useAuth } from '../context/AuthContext'
 import { motion } from 'motion/react'
 
@@ -8,14 +8,16 @@ export default function Dashboard() {
   const { user } = useAuth()
   const [noteCount, setNoteCount] = useState(0)
   const [taskCount, setTaskCount] = useState(0)
+    const [courseCount, setCourseCount] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [notesRes, tasksRes] = await Promise.all([getNotes(), getTasks()])
+        const [notesRes, tasksRes, coursesRes] = await Promise.all([getNotes(), getTasks(), getCourses()])
         setNoteCount(notesRes.data.length)
         setTaskCount(tasksRes.data.filter((task) => !task.is_completed).length)
+        setCourseCount(coursesRes.data.length)
       } catch (error) {
         console.error('Failed to fetch dashboard stats:', error)
       } finally {
@@ -28,6 +30,7 @@ export default function Dashboard() {
   const stats = [
     { label: 'Notes', value: noteCount },
     { label: 'Tasks Due', value: taskCount },
+    { label: 'Courses', value: courseCount },
   ]
 
   return (
