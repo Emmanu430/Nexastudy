@@ -61,25 +61,27 @@ export default function TasksPages() {
 
     return (
         <DashboardLayout>
-        <h1 className="text-3xl font-bold text-white">Tasks</h1>
-        <p className="mt-2 text-gray-400">Stay on top of your assignments and deadlines.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Tasks</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">Stay on top of your assignments and deadlines.</p>
 
-        <form onSubmit={handleCreate} className="mt-8 p-6 rounded-xl bg-gray-900 border border-gray-800 flex flex-col sm:flex-row gap-3">            <input
+        <form onSubmit={handleCreate} className="mt-8 p-6 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row gap-3">
+            <input
             type="text"
             placeholder="Task title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+            className="flex-1 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
             <input
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"/>
+            className="w-full sm:w-auto px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
+            />
             <button
             type="submit"
             disabled={isCreating}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
+            className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
             >
             {isCreating ? 'Adding...' : 'Add'}
             </button>
@@ -95,7 +97,7 @@ export default function TasksPages() {
                 {tasks.map((task) => (
                 <div
                     key={task.id}
-                    className="p-4 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-between"
+                    className="p-4 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-between"
                 >
                     <div className="flex items-center gap-3">
                     <input
@@ -105,7 +107,7 @@ export default function TasksPages() {
                         className="w-5 h-5 rounded accent-blue-600 cursor-pointer"
                     />
                     <div>
-                        <p className={`font-medium ${task.is_completed ? 'text-gray-500 line-through' : 'text-white'}`}>
+                        <p className={`font-medium ${task.is_completed ? 'text-gray-500 line-through' : 'text-gray-900 dark:text-white'}`}>
                         {task.title}
                         </p>
                         {task.due_date && <p className="text-gray-500 text-sm">Due {task.due_date}</p>}

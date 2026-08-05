@@ -52,23 +52,23 @@ export default function Courses() {
 
     return (
         <DashboardLayout>
-        <h1 className="text-3xl font-bold text-white">Courses</h1>
-        <p className="mt-2 text-gray-400">Keep track of what you're studying this semester.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Courses</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">Keep track of what you're studying this semester.</p>
 
-        <form onSubmit={handleCreate} className="mt-8 p-6 rounded-xl bg-gray-900 border border-gray-800 flex flex-col sm:flex-row gap-3">
+        <form onSubmit={handleCreate} className="mt-8 p-6 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row gap-3">
             <input
             type="text"
             placeholder="Course title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+            className="flex-1 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
             <input
             type="text"
             placeholder="Code (e.g. CSC 101)"
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            className="w-full sm:w-40 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full sm:w-40 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
             <button
             type="submit"
@@ -89,12 +89,12 @@ export default function Courses() {
                 {courses.map((course) => (
                 <div
                     key={course.id}
-                    className="p-5 rounded-xl bg-gray-900 border border-gray-800 border-l-4"
+                    className="p-5 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 border-l-4"
                     style={{ borderLeftColor: course.color }}
                 >
                     <div className="flex items-start justify-between">
                     <div>
-                        <p className="text-white font-semibold">{course.title}</p>
+                        <p className="text-gray-900 dark:text-white font-semibold">{course.title}</p>
                         <p className="text-gray-500 text-sm mt-1">{course.code}</p>
                     </div>
                     <button

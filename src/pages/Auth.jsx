@@ -8,7 +8,6 @@ import { useAuth } from '../context/AuthContext'
     const navigate = useNavigate()
     const { setUser } = useAuth()
     const [isLogin, setIsLogin] = useState(!location.state?.register)
-    // const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -66,13 +65,13 @@ const handleRegisterSubmit = async (e) => {
 }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-950">
-        <div className="w-full max-w-md p-8 bg-gray-900 rounded-xl">
+        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-950">
+        <div className="w-full max-w-md p-8 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-transparent rounded-xl">
             <div className="flex gap-4 mb-6">
             <button
                 onClick={() => {setIsLogin(true); setError('')}}
                 className={`flex-1 py-2 rounded-lg font-medium ${
-                isLogin ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-400'
+                isLogin ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
                 }`}
             >
                 Login
@@ -80,14 +79,14 @@ const handleRegisterSubmit = async (e) => {
             <button
                 onClick={() => { setIsLogin(false); setError('')}}
                 className={`flex-1 py-2 rounded-lg font-medium ${
-                !isLogin ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-400'
+                !isLogin ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
                 }`}
             >
                 Register
             </button>
             </div>
                 {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+            <div className="mb-4 px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm">
                 {error}
             </div>
         )}
@@ -98,14 +97,14 @@ const handleRegisterSubmit = async (e) => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <button
     type="submit"
@@ -129,28 +128,28 @@ const handleRegisterSubmit = async (e) => {
                 placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input
                 type="email"
                 placeholder="Email"
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input
                 type="password"
                 placeholder="Password"
                 value={registerPassword}
                 onChange={(e) => setRegisterPassword(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input
                 type="password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <button
     type="submit"

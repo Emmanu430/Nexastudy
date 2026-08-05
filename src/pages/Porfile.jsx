@@ -62,37 +62,37 @@ export default function Profile() {
 
     return (
         <DashboardLayout>
-        <h1 className="text-3xl font-bold text-white">Profile</h1>
-        <p className="mt-2 text-gray-400">Manage your account details.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Profile</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">Manage your account details.</p>
 
-        <form onSubmit={handleProfileSubmit} className="mt-8 p-6 rounded-xl bg-gray-900 border border-gray-800 max-w-md">
-            <h2 className="text-lg font-semibold text-white mb-4">Basic Info</h2>
+        <form onSubmit={handleProfileSubmit} className="mt-8 p-6 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 max-w-md">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Basic Info</h2>
 
             {profileMessage && (
-            <div className="mb-4 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-sm">
+            <div className="mb-4 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400 text-sm">
                 {profileMessage}
             </div>
             )}
             {profileError && (
-            <div className="mb-4 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+            <div className="mb-4 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm">
                 {profileError}
             </div>
             )}
 
-            <label className="text-sm text-gray-400">Name</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Name</label>
             <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
 
-            <label className="text-sm text-gray-400">Email</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Email</label>
             <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
 
             <button
@@ -104,42 +104,42 @@ export default function Profile() {
             </button>
         </form>
 
-        <form onSubmit={handlePasswordSubmit} className="mt-6 p-6 rounded-xl bg-gray-900 border border-gray-800 max-w-md">
-            <h2 className="text-lg font-semibold text-white mb-4">Change Password</h2>
+        <form onSubmit={handlePasswordSubmit} className="mt-6 p-6 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 max-w-md">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Change Password</h2>
 
             {passwordMessage && (
-            <div className="mb-4 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-sm">
+            <div className="mb-4 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400 text-sm">
                 {passwordMessage}
             </div>
             )}
             {passwordError && (
-            <div className="mb-4 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+            <div className="mb-4 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm">
                 {passwordError}
             </div>
             )}
 
-            <label className="text-sm text-gray-400">Current Password</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Current Password</label>
             <input
             type="password"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
 
-            <label className="text-sm text-gray-400">New Password</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">New Password</label>
             <input
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
 
-            <label className="text-sm text-gray-400">Confirm New Password</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Confirm New Password</label>
             <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full mt-1 mb-4 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600"
             />
 
             <button

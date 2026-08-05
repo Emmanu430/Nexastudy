@@ -85,16 +85,16 @@ export default function NotesPages() {
 
     return (
         <DashboardLayout>
-        <h1 className="text-3xl font-bold text-white">Notes</h1>
-        <p className="mt-2 text-gray-400">Capture and organize your thoughts.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Notes</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">Capture and organize your thoughts.</p>
 
-        <form onSubmit={handleCreate} className="mt-8 p-6 rounded-xl bg-gray-900 border border-gray-800">
+        <form onSubmit={handleCreate} className="mt-8 p-6 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
             <textarea
             placeholder="Start typing... the first line becomes your note's title"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             rows={4}
-            className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-blue-600 resize-none"
+            className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600 resize-none"
             />
             <button
             type="submit"
@@ -113,14 +113,14 @@ export default function NotesPages() {
             ) : (
             <div className="grid md:grid-cols-2 gap-4">
                 {notes.map((note) => (
-                <div key={note.id} className="p-5 rounded-xl bg-gray-900 border border-gray-800">
+                <div key={note.id} className="p-5 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
                     {editingId === note.id ? (
                     <>
                         <textarea
                         value={editContent}
                         onChange={(e) => setEditContent(e.target.value)}
                         rows={4}
-                        className="w-full px-3 py-2 rounded-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-blue-600 resize-none"
+                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-transparent outline-none focus:ring-2 focus:ring-blue-600 resize-none"
                         />
                         <div className="flex gap-2 mt-3">
                         <button
@@ -132,7 +132,7 @@ export default function NotesPages() {
                         </button>
                         <button
                             onClick={cancelEditing}
-                            className="px-4 py-1.5 bg-gray-800 text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-700 transition"
+                            className="px-4 py-1.5 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-300 dark:hover:bg-gray-700 transition"
                         >
                             Cancel
                         </button>
@@ -141,7 +141,7 @@ export default function NotesPages() {
                     ) : (
                     <>
                         <div className="flex items-start justify-between">
-                        <h3 className="text-lg font-semibold text-white">{note.title}</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{note.title}</h3>
                         <div className="flex gap-2">
                             <button
                             onClick={() => startEditing(note)}
@@ -157,7 +157,7 @@ export default function NotesPages() {
                             </button>
                         </div>
                         </div>
-                        {note.content && <p className="mt-2 text-gray-400 text-sm whitespace-pre-wrap">{note.content}</p>}
+                        {note.content && <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm whitespace-pre-wrap">{note.content}</p>}
                     </>
                     )}
                 </div>

@@ -8,6 +8,11 @@ import 'swiper/css/pagination'
 import '../swiper-custom.css'
 import { useNavigate } from 'react-router-dom'
 import LogoIcon from "../components/Logo"
+import { useRef, useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const features = [
     {
@@ -31,8 +36,25 @@ const features = [
 
     export default function Landing() {
         const navigate = useNavigate()
+        const testimonialsRef = useRef(null)
+
+        useEffect(() => {
+        gsap.fromTo(
+            testimonialsRef.current,
+            { opacity: 0, y: 40 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: testimonialsRef.current,
+                    start: 'top 80%',
+                },
+            }
+        )
+    }, [])
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-950 overflow-x-hidden">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-950 overflow-x-hidden">
         <section className="w-full text-center pt-20">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -41,8 +63,8 @@ const features = [
                 className="flex items-center justify-center gap-4"
             >
                 <LogoIcon size={70} />
-                <h1 className="text-5xl font-bold text-white -ml-5 mb-3">
-                    Nexa<span className="text-blue-500">Study</span>
+                <h1 className="text-5xl font-bold text-gray-900 dark:text-white -ml-5 mb-3">
+                    Nexa<span className="text-blue-600 dark:text-blue-500">Study</span>
                 </h1>
             </motion.div>
 
@@ -50,14 +72,14 @@ const features = [
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-lg text-gray-400"
+            className="mt-4 text-lg text-gray-600 dark:text-gray-400"
             >
             Your Academic Operating System
             </motion.p>
 
             <button 
             onClick={() => navigate('/auth', { state: { register: true } })}
-            className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+            className="mt-8 px-6 py-3 bg-blue-600 dark:bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
             Get Started
             </button>
         </section>
@@ -70,16 +92,16 @@ const features = [
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.15 }}
-                className="p-6 rounded-xl bg-gray-900"
+                className="p-6 rounded-xl bg-gray-100 dark:bg-gray-900"
                 >
-                <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
-                <p className="mt-2 text-gray-400">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
+                <p className="mt-2 text-gray-600 dark:text-gray-400">{feature.description}</p>
                 </motion.div>
             ))}
             </div>
         </section>
-        <section  className="w-full py-20 px-6 overflow-hidden">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">What Students Say</h2>
+        <section ref={testimonialsRef} className="w-full py-20 px-6 overflow-hidden">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">What Students Say</h2>
             <Swiper
                 modules={[Navigation, Pagination]}
                 navigation
@@ -91,10 +113,10 @@ const features = [
             >
                 {testimonials.map((t) => (
                 <SwiperSlide key={t.name}>
-                    <div className="p-6 sm:p-8 rounded-xl bg-gray-900 text-center">
-                    <p className="text-gray-300 text-lg italic">"{t.quote}"</p>
-                    <p className="mt-4 text-white font-semibold">{t.name}</p>
-                    <p className="text-gray-500 text-sm">{t.school}</p>
+                    <div className="p-6 sm:p-8 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-transparent text-center">
+                        <p className="text-gray-700 dark:text-gray-300 text-lg italic">"{t.quote}"</p>
+                        <p className="mt-4 text-gray-900 dark:text-white font-semibold">{t.name}</p>
+                        <p className="text-gray-500 dark:text-gray-500 text-sm">{t.school}</p>
                     </div>
                 </SwiperSlide>
                 ))}

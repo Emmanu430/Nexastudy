@@ -12,7 +12,7 @@ import Courses from './pages/Courses'
 
 export default function App() {
   const location = useLocation()
-  const hideNavbarPaths = ['/dashboard', '/notes', '/tasks', '/ai-chat', '/profile']
+  const hideNavbarPaths = ['/dashboard', '/notes', '/tasks', '/ai-chat', '/profile', '/courses']
   const showNavbar = !hideNavbarPaths.includes(location.pathname)
 
   return (

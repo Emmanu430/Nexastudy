@@ -35,8 +35,8 @@ export default function Dashboard() {
 
   return (
     <DashboardLayout>
-      <h1 className="text-3xl font-bold text-white">Welcome back{user ? `, ${user.name.split(' ')[0]}` : ''}!</h1>
-      <p className="mt-2 text-gray-400">Here's what's happening in your academic world today.</p>
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome back{user ? `, ${user.name.split(' ')[0]}` : ''}!</h1>
+      <p className="mt-2 text-gray-600 dark:text-gray-400">Here's what's happening in your academic world today.</p>
 
       <div className="grid md:grid-cols-3 gap-6 mt-8">
        {loading ? (
@@ -48,10 +48,10 @@ export default function Dashboard() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="p-6 rounded-xl bg-gray-900 border border-gray-800"
+      className="p-6 rounded-xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
     >
-      <p className="text-gray-400 text-sm">{stat.label}</p>
-      <p className="text-3xl font-bold text-white mt-1">{stat.value}</p>
+      <p className="text-gray-600 dark:text-gray-400 text-sm">{stat.label}</p>
+      <p className="text-3xl font-bold text-gray-900 dark:text-white mt-1">{stat.value}</p>
     </motion.div>
   ))
 )}
