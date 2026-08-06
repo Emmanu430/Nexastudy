@@ -12,14 +12,16 @@ export default function Sidebar({ isOpen, onClose }) {
     const { theme, toggleTheme } = useTheme()
 
     const handleLogout = async () => {
-        try {
-        await api.post('/logout')
-        setUser(null)
-        navigate('/auth')
-        } catch (error) {
-        console.error('Logout failed:', error.response?.data)
-        }
+    try {
+    await api.post('/api/logout')
+    } catch (error) {
+    console.error('Logout failed:', error.response?.data)
+    } finally {
+    localStorage.removeItem('token')
+    setUser(null)
+    navigate('/auth')
     }
+}
 
     const navItems = [
         { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },

@@ -9,9 +9,17 @@ export function AuthProvider({ children }) {
     const [sidebarOpen, setSidebarOpen] = useState(true)
 
     useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (!token) {
+            setLoading(false)
+            return
+        }
         api.get('/api/user')
         .then((response) => setUser(response.data))
-        .catch(() => setUser(null))
+        .catch(() => {
+            localStorage.removeItem('token')
+            setUser(null)
+        })
         .finally(() => setLoading(false))
     }, [])
 

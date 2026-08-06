@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import api, { getCsrfCookie } from '../api'
+import api from '../api'
 import { useAuth } from '../context/AuthContext'
 
     export default function Auth() {
@@ -19,10 +19,9 @@ const handleSubmit = async (e) => {
     setError('')
     setIsLoginSubmitting(true)
     try {
-        await getCsrfCookie()
-        await api.post('/login', { email, password })
-        const { data } = await api.get('/api/user')
-        setUser(data)
+        const { data } = await api.post('/api/login', { email, password })
+        localStorage.setItem('token', data.token)
+        setUser(data.user)
         navigate('/dashboard')
     } catch (err) {
         const message = err.response?.data?.message || 'Login failed. Please check your credentials.'
@@ -46,15 +45,14 @@ const handleRegisterSubmit = async (e) => {
     }
     setIsRegisterSubmitting(true)
     try {
-        await getCsrfCookie()
-        await api.post('/register', {
+        const { data } = await api.post('/api/register', {
             name,
             email: registerEmail,
             password: registerPassword,
             password_confirmation: confirmPassword,
         })
-        const { data } = await api.get('/api/user')
-        setUser(data)
+        localStorage.setItem('token', data.token)
+        setUser(data.user)
         navigate('/dashboard')
     } catch (err) {
         const message = err.response?.data?.message || 'Registration failed. Please try again.'
